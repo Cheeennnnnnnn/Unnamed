@@ -1,0 +1,20 @@
+﻿#ifndef IPHASH_H
+#define IPHASH_H
+
+#include <string.h>
+#include "prolib.h"
+
+class IPHash
+{
+public:
+    bool longitude[360];
+    bool latitude[180];
+    
+public:
+    IPHash();
+    
+    void resetHashMap();
+    Tuple<int, int> hash(unsigned char* ip);
+};
+
+#endif // IPHASH_H

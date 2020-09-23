@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="echarts.min.js"></script>
+       <script type="text/javascript" src="echarts-gl.min.js"></script>
+       <script type="text/javascript" src="ecStat.min.js"></script>
+       <script type="text/javascript" src="dataTool.js"></script>
+       <script type="text/javascript" src="china.js"></script>
+       <script type="text/javascript" src="world.js"></script>
+       <script type="text/javascript" src="bmap.js"></script>
+	   <script type="text/javascript" src="jquery.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+function emmm(){
+
+
+
+
+    var test = [];
+	test[0]=0;
+	test[1]=1;
+	test[2]=2;
+	test.splice(1,1);
+	test.splice(1,1);
+	//window.alert(JSON.stringify(test));
+	
+	var a = [];
+	var series = [];
+	//window.alert(JSON.stringify(series));
+	
+	for(var i=0;i<=50;i++)
+	a.push([Math.random() * (-120)+60,Math.random() * (-80)+40,0,'10.0.0.55','']);
+	//a.push([20,20,1000,'2','']);
+	//a.push([70,70,0,'2','']);
+
+
+	
+	
+	//新建点
+	
+	
+	
+	
+	function addpoint(index){
+		series.push({
+        type: 'scatter3D',
+		name: 'point',
+        coordinateSystem: 'globe',
+        blendMode: 'lighter',
+		symbolSize: 10,
+        itemStyle: {
+            color: 'rgb(50, 50, 150)',
+            opacity: 5,
+			normal: {label : {show: false}}
+        },
+		//data: [[(a[0][0]+a[1][0])/2,(a[0][1]+a[1][1])/2,0,'2','']]
+        //data: a
+		//data: [a[index]]
+		data: []
+    });
+	}
+	
+
+	
+	
+	
+	
+	
+	addpoint(0);
+	//addpoint(1);
+	//addpoint(2);
+	//addpoint(3);
+	
+	
+	
+	
+	//series.splice(1,1);
+	
+	
+	
+	//新建边
+	
+	
+	var b=[];
+	for(var i=0;i<=100	;i++){
+	//addedge(Math.floor(Math.random() * 50),Math.floor(Math.random() * 50),Math.floor(Math.random() * 20));
+	b.push([a[Math.floor(Math.random() * 50)],a[Math.floor(Math.random() * 50)]]);
+	}
+	//window.alert(JSON.stringify(a));
+	/*
+	function addedge(indexf,indext,width){
+		series.push({
+        type: 'lines3D',
+		coordinateSystem: 'globe',
+		name: 'edge',
+		
+        effect: {
+            show: true,
+            trailWidth: width,
+            trailLength: 1.5,
+            trailOpacity: 0.1,
+            trailColor: 'rgb(30, 30, 60)',
+			constantSpeed: 60
+        },
+		
+		label: {
+            show: true,
+            position: 'right',
+			formatter: '{b}'
+        },
+		
+        lineStyle: {
+            width: width,
+            color: 'rgb(150, 0, 0)',
+            opacity: 0.1
+        },
+        blendMode: 'lighter',
+        //data: [[[40,40],[50,50]]]
+		//data: [[a[indexf],a[indext]]]
+		//data: b
+		data: []
+    })
+    }
+	*/
+/*
+	for(j=0;j<100;j++)
+	addedge(1,2,5);
+	for(j=0;j<10;j++)
+	addedge(2,3,5);
+	addedge(3,4,5);
+	*/
+	
+	
+	
+	
+	/*
+	for(var i=0;i<=100	;i++){
+	//addedge(Math.floor(Math.random() * 50),Math.floor(Math.random() * 50),Math.floor(Math.random() * 20));
+	b.push([a[Math.floor(Math.random() * 50],a[Math.floor(Math.random() * 50],0]);
+	};
+*/
+	
+	
+	//addedge(0,0,0);
+	//addedge(0,2,20);
+
+	/*
+	series.splice(0,1);
+	series.splice(0,1);
+	*/
+
+	
+
+
+	
+
+    myChart.setOption({
+	
+        legend: {
+            selectedMode: 'multiple',//single
+            left: 'left',
+            //data: Object.keys(routesGroupByAirline),
+            orient: 'vertical',
+            textStyle: {
+                color: '#fff'
+            }
+        },
+		tooltip: {
+			trigger: 'item',
+			
+			formatter:function(params){
+				//console.log(params[0]);
+				//window.alert(params.data[3]);
+				return 'ip:'+params.data[3];
+				
+			}
+			
+			
+		},
+        globe: {
+
+			environment: 'starfield.jpg',
+            //heightTexture: 'bathymetry_bw_composite_4k.jpg',
+		
+            displacementScale: 1,
+            displacementQuality: 'high',
+
+            baseColor: '#000',
+
+            shading: 'realistic',
+            realisticMaterial: {
+                roughness: 0.2,
+                metalness: 0
+            },
+			
+
+
+			/*
+            postEffect: {
+                enable: true,
+                depthOfField: {
+                    enable: false,
+                    focalDistance: 150
+                }
+            },
+			*/
+			
+			
+			
+            temporalSuperSampling: {
+                enable: true
+            },
+			
+			
+            light: {
+                ambient: {
+                    intensity: 0
+                },
+                main: {
+                    intensity: 0.1,
+                    shadow: false
+                },
+                ambientCubemap: {
+					texture: 'lake.hdr',
+					exposure: 1,
+                    diffuseIntensity: 0.5,
+                    specularIntensity: 2
+                }
+            },
+			
+            viewControl: {
+                autoRotate: false
+            },
+            silent: true
+        },
+        series: series
+    });
+	
+	/*
+	myChart.on('click',{seriesName:'point'},function(){
+		//window.open('https://www.baidu.com');
+		AddPoint(50,20,555);
+	})
+	*/
+	
+	
+	
+	
+    window.addEventListener('keydown', function () {
+        series.forEach(function (series, idx) {
+            myChart.dispatchAction({
+                type: 'lines3DToggleEffect',
+                seriesIndex: idx
+            });
+        })
+    });
+};
+ emmm();
+
+var points = [];
+
+ function AddPoint(lng,lat,ip)
+ {
+	var op = myChart.getOption();
+	op.series[0].data.push([lng,lat,0,ip,'']);
+	points.push([lng,lat,0,ip,'']);
+	myChart.setOption(op);
+ };
+ // 数字，数字，字符串
+ function AddEdge(input1,input2,width)
+ {
+	var op = myChart.getOption();
+	op.series.push({
+        type: 'lines3D',
+		coordinateSystem: 'globe',
+		name: 'edge',
+		
+        effect: {
+            show: true,
+            trailWidth: width,
+            trailLength: 1.5,
+            trailOpacity: 0.5,
+            trailColor: 'rgb(30, 30, 60)',
+			constantSpeed: 60
+        },
+		
+		label: {
+            show: true,
+            position: 'right',
+			formatter: '{b}'
+        },
+		
+        lineStyle: {
+            width: width,
+            color: 'rgb(150, 0, 0)',
+            opacity: 0.5
+        },
+        blendMode: 'lighter',
+        //data: [[[40,40],[50,50]]]
+		data: [[points[input1],points[input2]]]
+		//data: b
+		//data: []
+    })
+	//op.series[1].data.push([points[input1],points[input2]]);
+	myChart.setOption(op);
+ };
+ function ChangeWidth(index,width)
+ {
+	var op = myChart.getOption();
+	op.series[index+1].effect.trailWidth = width;
+	op.series[index+1].lineStyle.width = width;
+	myChart.setOption(op,true);
+ }
+ function DeletePoint(input)
+ {
+	var op = myChart.getOption();
+	op.series[0].data.splice(input,1);
+	points.splice(input,1);
+	myChart.setOption(op,true);
+ };
+ function DeleteEdge(input)
+ {
+	var op = myChart.getOption();
+	op.series.splice(input+1,1);window.alert(JSON.stringify(op.series));
+	myChart.setOption(op,true);
+ };
+ function DeleteAllPoint()
+ {
+	var op = myChart.getOption();
+	op.series[0].data = [];
+	myChart.setOption(op,true);
+ };
+ function DeleteAllEdge()
+ {
+	var op = myChart.getOption();
+	var tmp = op.series[0];
+	op.series = [];
+	op.series.push(tmp);
+	myChart.setOption(op,true);//
+ };
+ 
+ /*
+ AddPoint(50,50,8888);
+ AddPoint(20,20,8844);
+ AddEdge(0,1,5);
+ ChangeWidth(0,20);
+ DeleteEdge(0);
+ */
+
+ 
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+	   
+	   
+   </body>
+</html>

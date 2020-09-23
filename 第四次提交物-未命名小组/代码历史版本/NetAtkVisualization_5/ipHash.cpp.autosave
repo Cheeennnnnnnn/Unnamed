@@ -1,0 +1,18 @@
+﻿#include "ipHash.h"
+
+IPHash::IPHash()
+{
+    memset(longitude, 0, 360 * sizeof(bool));
+    memset(latitude, 0, 180 * sizeof(bool));
+}
+
+void IPHash::resetHashMap()
+{
+    memset(longitude, 0, 360 * sizeof(bool));
+    memset(latitude, 0, 180 * sizeof(bool));
+}
+
+Tuple<int, int> IPHash::hash(unsigned char *ip)
+{
+    
+}
